@@ -1,0 +1,24 @@
+name: Build Heltec V4 MQTT Observer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: mqtt-observer-remote
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Build firmware
+        run: platformio run -e heltec_v4_repeater_observer_mqtt
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v3
+        with:
+          name: heltec-v4-mqtt-observer
+          path: .pio/build/heltec_v4_repeater_observer_mqtt/*.bin
