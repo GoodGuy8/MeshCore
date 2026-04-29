@@ -149,6 +149,7 @@ build_repeater_firmwares() {
 
   # build all repeater firmwares
   build_all_firmwares_by_suffix "_repeater"
+  build_all_firmwares_by_suffix "_observer_mqtt"
 
 }
 
